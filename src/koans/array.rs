@@ -108,8 +108,13 @@ fn for_loops() {
 fn for_loops_two() {
     let words: [&'static str; 3] = ["I", "love", "Rust"];
     let mut sentence: String = String::new();
+    let mut i = 0;
     for word in words.iter() {
-        sentence += word; // TODO: fix
+        sentence += word;
+        i += 1;
+        if i < words.len() {
+            sentence += " ";
+        }
     }
     println!("{:?}", sentence);
     assert!(sentence == "I love Rust".to_string());
