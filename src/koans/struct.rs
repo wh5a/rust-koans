@@ -12,8 +12,8 @@ fn our_first_struct() {
         age: 57,
     };
 
-    assert_eq!(jim.name, __);
-    assert_eq!(jim.age, __);
+    assert_eq!(jim.name, "Jim");
+    assert_eq!(jim.age, 57);
 }
 
 // Let's try another example
@@ -26,10 +26,10 @@ fn one_more_struct() {
 
     let movie = Movie {
         title: "Star Wars",
-        runtime: __,
+        runtime: 121,
     };
 
-    assert_eq!(movie.title, __);
+    assert_eq!(movie.title, "Star Wars");
     assert_eq!(movie.runtime, 121);
 }
 
@@ -43,7 +43,7 @@ fn mutable_structs() {
 
     let mut rust = Language { version: "1.3.0" };
 
-    __ = "1.4.0";
+    rust.version = "1.4.0";
 
     assert_eq!(rust.version, "1.4.0");
 }
@@ -61,7 +61,7 @@ fn revoking_mutability() {
 
     assert_eq!(rust.version, "1.4.0");
 
-    let rust = rust;
+    let rust = &mut rust;
 
     rust.version = "1.5.0";
 
@@ -74,18 +74,18 @@ fn revoking_mutability() {
 fn dot_merging() {
     struct Account {
         holder: &'static str,
-        account_number: &'static str,
+        _account_number: &'static str,
         balance: f64,
     }
 
     let broke = Account {
         holder: "Morgan Stanley",
-        account_number: "00021948523756312",
+        _account_number: "00021948523756312",
         balance: 0.00,
     };
 
     let rich = Account { balance: 1000000.00, ..broke };
 
-    assert_eq!(rich.holder, __);
-    assert_eq!(rich.balance, __);
+    assert_eq!(rich.holder, "Morgan Stanley");
+    assert_eq!(rich.balance, 1000000.);
 }
